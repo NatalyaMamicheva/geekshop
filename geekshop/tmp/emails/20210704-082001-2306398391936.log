@@ -1,0 +1,11 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Account verify
+From: django@gb.local
+To: rr@ma.ru
+Date: Sun, 04 Jul 2021 04:20:01 -0000
+Message-ID: <162537240149.181516.7231663037705110923@DESKTOP-SATGSBE>
+
+Your link for account activation: http://127.0.0.1:8000/auth/verify/rr@ma.ru/0f04911216f17f5cf0b5e3ab2a35ceb38b5da1a4/ 
+-------------------------------------------------------------------------------

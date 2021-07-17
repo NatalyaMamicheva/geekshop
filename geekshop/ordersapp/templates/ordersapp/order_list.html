@@ -1,0 +1,47 @@
+{% extends 'ordersapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="text-center h2 header">
+        Ваши заказы, {% if user.first_name %}{{ user.first_name }}{% else %}Пользователь{% endif %}
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Создан</th>
+                <th>Обновлен</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in object_list %}
+            <tr>
+                <td>{{ item.pk }}</td>
+                <td>{{ item.created|date:"d.m.Y H:i:s" }}</td>
+                <td>{{ item.updated|date:"d.m.Y H:i:s" }}</td>
+                <td>{{ item.get_status_display }}</td>
+                <td>
+                    <a href="{% url 'order:read' item.pk %}" class="btn btn-link">Посмотреть</a>
+                </td>
+                <td>
+                    {% if item.status == 'FM' %}
+                    <a href="{% url 'order:update' item.pk %}" class="btn btn-link">Изменить</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if item.status == 'FM' %}
+                    <a href="{% url 'order:delete' item.pk %}" class="btn btn-link">Удалить</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+    <div class="text-center">
+        <a href="{% url 'order:create' %}" class="btn btn-primary">Новый заказ</a>
+<hr>
+        <a href="{% url 'main' %}" class="btn btn-link">На главную</a>
+    </div>
+{% endblock %}

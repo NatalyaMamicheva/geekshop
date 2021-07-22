@@ -212,3 +212,17 @@ SOCIAL_AUTH_PIPELINE = (
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7892958'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = '6HTBNc7cc5LUiDE8HRnm'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if os.name == 'posix':
+   CACHE_MIDDLEWARE_ALIAS = 'default'
+   CACHE_MIDDLEWARE_SECONDS = 120
+   CACHE_MIDDLEWARE_KEY_PREFIX = 'geekshop'
+
+   CACHES = {
+       'default': {
+           'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+           'LOCATION': '127.0.0.1:11211',
+       }
+   }
+
+LOW_CACHE = True

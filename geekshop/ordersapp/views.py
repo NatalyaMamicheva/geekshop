@@ -5,6 +5,8 @@ from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy, reverse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from basketapp.models import Basket
@@ -14,10 +16,14 @@ from ordersapp.models import Order, OrderItem
 
 
 class OrderList(ListView):
-    model = Order
+   model = Order
 
-    def get_queryset(self):
-        return Order.objects.filter(user=self.request.user, is_active=True)
+   def get_queryset(self):
+       return Order.objects.filter(user=self.request.user)
+
+   @method_decorator(login_required())
+   def dispatch(self, *args, **kwargs):
+       return super(ListView, self).dispatch(*args, **kwargs)
 
 
 class OrderCreate(CreateView):

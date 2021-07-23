@@ -2,6 +2,8 @@ import datetime, random, os, json
 from django.shortcuts import render, get_object_or_404
 from mainapp.models import ProductCategory, Product
 from basketapp.models import Basket
+from django.conf import settings
+from django.core.cache import cache
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 

@@ -6,6 +6,7 @@ from django.urls import reverse
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
 from authapp.forms import ShopUserRegisterForm
+from django.dispatch import receiver
 from adminapp.forms import ShopUserAdminEditForm, ProductCategoryEditForm, ProductEditForm
 from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy

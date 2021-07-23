@@ -1,3 +1,5 @@
+from django.db import connection
+from django.db.models import F
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import user_passes_test
 from django.urls import reverse
@@ -9,9 +11,6 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.dispatch import receiver
-from django.db.models.signals import pre_save
-from django.db import connection
 
 from django.views.generic.detail import DetailView
 

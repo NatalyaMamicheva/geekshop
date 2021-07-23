@@ -9,6 +9,7 @@ from authapp.forms import ShopUserRegisterForm
 from django.dispatch import receiver
 from adminapp.forms import ShopUserAdminEditForm, ProductCategoryEditForm, ProductEditForm
 from django.utils.decorators import method_decorator
+from django.db.models.signals import pre_save
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
